@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MISS MO BA SI MARCO</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    .miss {
+      color: red;
+      font-weight: 900;
+      font-size: 8rem;
+      text-align: center;
+    }
+
+    .sad {
+      margin-top: -60%;
+    }
+
+    .sagot {
+      margin-top: -52%;
+      text-align: center;
+    }
+
+    #missHeader.blue {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="miss" id="missHeader">MISS MO BA KO?</h1>
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <img class="sad" id="sadImage" src="sad.gif" alt="sad na marco">
+  </div>
+  <div class="mt-9 sagot">
+    <button type="button" class="btn btn-success me-2" id="oo">Oo</button>
+    <button type="button" class="btn btn-danger" id="hinde">Hinde</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const hindeButton = document.getElementById('hinde');
+      const maxX = window.innerWidth - hindeButton.offsetWidth;
+      const maxY = window.innerHeight - hindeButton.offsetHeight;
+
+      function handleMove(event) {
+        const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+        const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+
+        const buttonRect = hindeButton.getBoundingClientRect();
+        const buttonX = buttonRect.left + buttonRect.width / 2;
+        const buttonY = buttonRect.top + buttonRect.height / 2;
+
+        const distance = Math.sqrt(Math.pow(clientX - buttonX, 2) + Math.pow(clientY - buttonY, 2));
+
+        if (distance < 130) { 
+          const newX = Math.floor(Math.random() * maxX);
+          const newY = Math.floor(Math.random() * maxY);
+          hindeButton.style.position = 'absolute';
+          hindeButton.style.left = `${newX}px`;
+          hindeButton.style.top = `${newY}px`;
+          hindeButton.style.transition = 'left 0.5s ease, top 0.5s ease';
+        }
+      }
+
+      document.addEventListener('mousemove', handleMove);
+      document.addEventListener('touchmove', handleMove);
+
+      const ooButton = document.getElementById('oo');
+      ooButton.addEventListener('click', function () {
+        const sadImage = document.getElementById('sadImage');
+        sadImage.src = 'ricardo.gif';
+        const missHeader = document.getElementById('missHeader');
+        missHeader.textContent = 'MWAAAAAAA!';
+        missHeader.classList.add('blue'); 
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous
